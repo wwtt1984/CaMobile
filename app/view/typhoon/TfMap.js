@@ -9,7 +9,6 @@ Ext.define('YzMobile.view.typhoon.TfMap', {
     extend: 'Ext.Map',
     xtype: 'tfmap',
 
-
     config: {
         itemId: 'tfmap',
         height: '100%',
@@ -24,7 +23,6 @@ Ext.define('YzMobile.view.typhoon.TfMap', {
     ssss: function()
     {
         var me = this;
-
         me.map = me.getMap();
         me.map.setCenter(new google.maps.LatLng(YzMobile.app.mapCenter[0], YzMobile.app.mapCenter[1]));
         me.map.setZoom(YzMobile.app.mapCenter[2]);
@@ -38,6 +36,7 @@ Ext.define('YzMobile.view.typhoon.TfMap', {
 
 //取得台风数据(年份列表)
     mytflist: function() {
+
         var me = this;
         me.store_list = Ext.getStore('TfStore');
         me.store_list.getProxy().setExtraParams({
@@ -64,6 +63,7 @@ Ext.define('YzMobile.view.typhoon.TfMap', {
     mydate: function(tfname,tfbh,tfactive) {
 
         var me = this;
+        me.map = me.getMap();
         if(tfbh!=null){
 
             me.store = Ext.getStore('TfDetailStore');
@@ -350,6 +350,7 @@ Ext.define('YzMobile.view.typhoon.TfMap', {
         this.circle7 = new google.maps.Circle(populationOptions7);
         this.circle10 = new google.maps.Circle(populationOptions);
         this.map.panTo(new google.maps.LatLng(wd, jd));
+        this.map.setZoom(15);
         //十级风圈上的提示功能
         google.maps.event.addListener(this.circle10, 'click', function(event) {
             var labelText = "十级风圈,半径" + sjfq + "公里";

@@ -35,6 +35,7 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLResultSetRowList": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
   "Ext.draw.engine.SvgContext.Gradient": "touch/src/draw/engine/SvgContext.js",
+  "WebInspect": "app",
   "YzMobile": "app"
 });
 
@@ -764,6 +765,9 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
+  "WebInspect.view.settings.Module": [],
+  "WebInspect.view.settings.PushSetting": [],
+  "WebInspect.view.settings.Version": [],
   "YzMobile.controller.BaseControl": [],
   "YzMobile.controller.ContactControl": [],
   "YzMobile.controller.GisControl": [],
@@ -773,6 +777,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "YzMobile.controller.ProjectControl": [],
   "YzMobile.controller.ProjectMenuControl": [],
   "YzMobile.controller.RainControl": [],
+  "YzMobile.controller.SettingsControl": [],
   "YzMobile.controller.TfControl": [],
   "YzMobile.controller.WaterControl": [],
   "YzMobile.controller.WeatherControl": [],
@@ -791,6 +796,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "YzMobile.model.RainDetailModel": [],
   "YzMobile.model.RainModel": [],
   "YzMobile.model.SearchModel": [],
+  "YzMobile.model.SettingModel": [],
   "YzMobile.model.TfDetailModel": [],
   "YzMobile.model.TfForeModel": [],
   "YzMobile.model.TfModel": [],
@@ -818,6 +824,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "YzMobile.store.RainDetailStore": [],
   "YzMobile.store.RainStore": [],
   "YzMobile.store.SearchStore": [],
+  "YzMobile.store.SettingStore": [],
   "YzMobile.store.TfDetailStore": [],
   "YzMobile.store.TfForeStore": [],
   "YzMobile.store.TfStore": [],
@@ -855,6 +862,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "YzMobile.view.project.Search": [],
   "YzMobile.view.rain.Rain": [],
   "YzMobile.view.rain.RainBar": [],
+  "YzMobile.view.settings.Setting": [],
+  "YzMobile.view.settings.Update": [],
   "YzMobile.view.typhoon.PopUp": [],
   "YzMobile.view.typhoon.TfList": [],
   "YzMobile.view.typhoon.TfMain": [],
@@ -1812,6 +1821,15 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
+  "WebInspect.view.settings.Module": [
+    "widget.module"
+  ],
+  "WebInspect.view.settings.PushSetting": [
+    "widget.pushsetting"
+  ],
+  "WebInspect.view.settings.Version": [
+    "widget.version"
+  ],
   "YzMobile.controller.BaseControl": [],
   "YzMobile.controller.ContactControl": [],
   "YzMobile.controller.GisControl": [],
@@ -1821,6 +1839,7 @@ Ext.ClassManager.addNameAliasMappings({
   "YzMobile.controller.ProjectControl": [],
   "YzMobile.controller.ProjectMenuControl": [],
   "YzMobile.controller.RainControl": [],
+  "YzMobile.controller.SettingsControl": [],
   "YzMobile.controller.TfControl": [],
   "YzMobile.controller.WaterControl": [],
   "YzMobile.controller.WeatherControl": [],
@@ -1839,6 +1858,7 @@ Ext.ClassManager.addNameAliasMappings({
   "YzMobile.model.RainDetailModel": [],
   "YzMobile.model.RainModel": [],
   "YzMobile.model.SearchModel": [],
+  "YzMobile.model.SettingModel": [],
   "YzMobile.model.TfDetailModel": [],
   "YzMobile.model.TfForeModel": [],
   "YzMobile.model.TfModel": [],
@@ -1868,6 +1888,7 @@ Ext.ClassManager.addNameAliasMappings({
   "YzMobile.store.RainDetailStore": [],
   "YzMobile.store.RainStore": [],
   "YzMobile.store.SearchStore": [],
+  "YzMobile.store.SettingStore": [],
   "YzMobile.store.TfDetailStore": [],
   "YzMobile.store.TfForeStore": [],
   "YzMobile.store.TfStore": [],
@@ -1962,6 +1983,12 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "YzMobile.view.rain.RainBar": [
     "widget.rainbar"
+  ],
+  "YzMobile.view.settings.Setting": [
+    "widget.setting"
+  ],
+  "YzMobile.view.settings.Update": [
+    "widget.update"
   ],
   "YzMobile.view.typhoon.PopUp": [
     "widget.typop"

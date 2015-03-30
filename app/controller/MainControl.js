@@ -4,7 +4,6 @@
 
 Ext.define('YzMobile.controller.MainControl', {
     extend: 'Ext.app.Controller',
-
     requires: [
         'Ext.app.Route'
     ],
@@ -16,20 +15,14 @@ Ext.define('YzMobile.controller.MainControl', {
             maintitle: 'maintitle',
             functionmain: 'functionmain',
             functionlist: '#functionlist',
-
             confirm: '#confirm',
-
             info: 'main info',
-
             infofunction: '[itemId=infofunction]',
-
             infosearch: '[itemId=infosearch]',
-
             dateselect: 'dateselect',
             startdate: '[itemId=startdate]',
             enddate: '[itemId=enddate]',
             dateconfirm: '[itemId=dateconfirm]',
-
             load: '[itemId=load]',
             contactList:'contactList'
         },
@@ -280,21 +273,16 @@ Ext.define('YzMobile.controller.MainControl', {
     },
 
     onLoginTap: function(){
-
         var me = this;
         YzMobile.app.user.sid = Ext.getCmp('name').getValue();
         YzMobile.app.user.password = Ext.getCmp('password').getValue();
-
-
         me.onUserCheck();
-
     },
 
     //用户验证
     onUserCheck: function(){
 
         var me = this;
-
         var results = YzMobile.app.user.sid + "$" +  YzMobile.app.user.password;
         Ext.Viewport.setMasked({xtype:'loadmask',message:'登录中,请稍后...'});
 
@@ -314,14 +302,11 @@ Ext.define('YzMobile.controller.MainControl', {
                     plugins.Toast.ShowToast("验证失败！请重新输入！",3000);
                 }
                 else{
+                    Ext.Viewport.setMasked(false);
                     YzMobile.app.user.name = records[0].data.name;
                     YzMobile.app.user.mobile = records[0].data.mobile;
-
                     records[0].data.password = YzMobile.app.user.password;
-
                     Ext.getCmp('maintitle').onDataSet(records[0].data);
-
-                    Ext.Viewport.setMasked(false);
                     me.getMain().setActiveItem(me.getFunctionmain());
                     me.onUserWriteJson(store); //将验证成功的用户信息，存在本地
                     me.onCheckVesion(me);  /////////////////判断是否有新版本/////////////////////
@@ -338,38 +323,30 @@ Ext.define('YzMobile.controller.MainControl', {
 
     onUserWriteJson: function(store){
         var hq = [];
-
         hq.push({
             sid: YzMobile.app.user.sid,
             name: YzMobile.app.user.name,
             password: YzMobile.app.user.password,
             mobile: YzMobile.app.user.mobile
         });
-
         var me = this;
-
         Ext.device.FileSystem.requestFileSystem({
             type: LocalFileSystem.PERSISTENT,
             size: 1024 * 1024,
             success: function(fileSystem) {
 
                 me.fs = fileSystem;
-
                 var fe = Ext.create("Ext.device.filesystem.FileEntry", YzMobile.app.local.userfile, fileSystem);
-
                 fe.getEntry(
                     {
                         file: YzMobile.app.local.userfile,
                         options: {create: true},
                         success: function(entry) {
-
                             fe.write(
                                 {
                                     data: Ext.JSON.encode(hq),
                                     success: function() {
-
                                         plugins.Toast.ShowToast("用户信息已保存！",3000);
-
                                     },
                                     failure: function(error) {
                                         plugins.Toast.ShowToast("用户信息保存失败！请重试！",3000);
@@ -426,7 +403,7 @@ Ext.define('YzMobile.controller.MainControl', {
 
         me.getMain().add(me.info);
 
-        var titlestr = ['rain', 'water', 'weather', 'land', 'gis', 'typhoon', 'project', 'base', 'contact','plan'];
+        var titlestr = ['rain', 'water', 'weather', 'land', 'gis', 'typhoon', 'project', 'base', 'contact','plan','setting'];
 
         switch(record.data.name){
             case titlestr[0]:
@@ -465,6 +442,35 @@ Ext.define('YzMobile.controller.MainControl', {
                 var view = Ext.create('YzMobile.view.plan.PlanList');
                 me.getMain().setActiveItem(view);
                 break;
+            case titlestr[10]:
+                //var view = Ext.create('YzMobile.view.settings.Setting');
+                //me.getMain().setActiveItem(view);
+                me.getApplication().getController('SettingsControl').onSettingInitialize();
+                break;
+               // if(!Ext.ClassManager.isCreated('YzMobile.controller.SettingsControl'))
+               // {
+               //     Ext.require(
+               //         'YzMobile.controller.SettingsControl',
+               //         function(){
+               //             debugger;
+               //             var controller = Ext.create('YzMobile.controller.SettingsControl');
+               //             controller.onSettingInitialize();
+               //
+               //            // me.getInfo().push(controller);
+               //             //me.getMain().setActiveItem(me.getInfo());
+               //             //controller.init();
+               //
+               //         }
+               //     );
+               // }
+               // else
+               // {
+               //
+               // }
+               //
+               //
+               //// me.getApplication().getController('SettingsControl').onSettingInitialize();
+               // break;
         }
 //        me.getMain().setActiveItem(me.getInfo());
     },
@@ -493,7 +499,8 @@ Ext.define('YzMobile.controller.MainControl', {
     {
         var store = Ext.getStore('VersionStore');
         store.getProxy().setExtraParams({
-            t: 'CheckVersion'
+            t: 'CheckVersion',
+            results:'android$jonsp'
         });
         store.load(function(records, operation, success){
 
@@ -519,7 +526,6 @@ Ext.define('YzMobile.controller.MainControl', {
 //                                me.downLoad(records[0].data.strFileName,records[0].data.strGetFileVersionFileURL,me);
 
                                 me.onLoadOrUploadViewShow('更新下载中', '正在下载中');
-
                                 me.downLoad(records[0].data.strFileName,records[0].data.strGetFileVersionFileURL,me);
                             }
                         });

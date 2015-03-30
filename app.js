@@ -10,6 +10,7 @@
  will need to resolve manually.
  */
 
+Ext.Loader.setConfig({enabled: true});
 Ext.Loader.setPath({
     'Ext': 'touch/src',
     'YzMobile': 'app',
@@ -24,9 +25,7 @@ Ext.application({
 
     mapCenter: [29.83, 121.53, 6],
     zhujimapCenter: [29.83, 121.53],
-
     user: {sid: '', name: '', password: '', version: '1.0'},
-
     local: {userfile: 'yzlogin.json'},
 
     requires: [
@@ -125,7 +124,9 @@ Ext.application({
         'ContactTreeModel',
         'ContactSearchModel',
         'PlanModel',
-        'PlanSearchModel'
+        'PlanSearchModel',
+        'SettingModel'
+
 
     ],
 
@@ -162,7 +163,8 @@ Ext.application({
         'ContactTreeStore',
         'ContactSearchStore',
         'PlanStore',
-        'PlanSearchStore'
+        'PlanSearchStore',
+        'SettingStore'
 
     ],
 
@@ -178,7 +180,8 @@ Ext.application({
         'BaseControl',
         'ProjectMenuControl',
         'ContactControl',
-        'PlanControl'
+        'PlanControl',
+        'SettingsControl'
 
     ],
 
